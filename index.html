@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module-10</title>
+    <style>
+        body{
+            background-color: rgb(212, 20, 237);
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+            font-family: sans-serif;
+            color: #000;
+            font-size: large;
+            font-weight: bolder;
+        }
+        button{
+            display: block;
+            padding: 15px 60px;
+            font-size: 18px;
+            background-color: #101010;
+            color: #fff;
+            position:relative;
+            margin: 30px auto;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {background-color: #101010 }
+
+        button:active {
+        background-color: #6cfa06;
+        box-shadow: 0 5px rgb(238, 170, 13);
+        transform: translateY(4px);
+        }
+
+
+        
+
+        img{
+            display: block;
+            width: 380px;
+            max-height: auto;
+            position: relative;
+            margin: 20px auto;
+            border-radius: 6px;
+            border-color: #101010;
+                }
+    </style>
+</head>
+<body>
+    <button>Generate Character</button>
+    <h1 class="name"></h1>
+    <img src="" class="character-img" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").on("click",function(){
+                const randomNumber= Math.ceil(Math.random()*88)
+                $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${randomNumber}.json`,
+                function(data){
+                    $("h1.name").text(data['name'])
+                    $(".character-img").attr("src",data['image'])
+                })
+            })
+        })
+    </script>
+</body>
+</html>
